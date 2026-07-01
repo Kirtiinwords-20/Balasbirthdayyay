@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Bala! ✨</title>
+    <style>
+        /* Base Page Setup & Red/White Gingham Background Grid */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #ffffff;
+            background-image: 
+                linear-gradient(90deg, rgba(230, 57, 70, 0.15) 50%, transparent 50%),
+                linear-gradient(rgba(230, 57, 70, 0.15) 50%, transparent 50%);
+            background-size: 40px 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating Balloons Animation */
+        .balloon-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .balloon {
+            position: absolute;
+            bottom: -150px;
+            width: 50px;
+            height: 65px;
+            background: #d62828;
+            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+            animation: floatUp 12s infinite ease-in-out;
+            opacity: 0.8;
+        }
+        .balloon::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 22px;
+            width: 6px;
+            height: 8px;
+            background: #d62828;
+            clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+        }
+        .balloon::before {
+            content: "";
+            position: absolute;
+            bottom: -45px;
+            left: 24px;
+            width: 2px;
+            height: 40px;
+            background: rgba(0,0,0,0.15);
+        }
+
+        /* Randomizing Balloon Positions & Speeds */
+        .b1 { left: 10%; animation-delay: 0s; animation-duration: 10s; background: #e63946; }
+        .b1::after { background: #e63946; }
+        .b2 { left: 25%; animation-delay: 3s; animation-duration: 14s; background: #941b0c; }
+        .b2::after { background: #941b0c; }
+        .b3 { left: 70%; animation-delay: 1s; animation-duration: 11s; background: #e63946; }
+        .b3::after { background: #e63946; }
+        .b4 { left: 85%; animation-delay: 5s; animation-duration: 15s; background: #941b0c; }
+        .b4::after { background: #941b0c; }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-120vh) rotate(10deg); opacity: 0; }
+        }
+
+        /* Falling Glitter/Confetti Canvas Simulation via CSS */
+        .glitter-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 2;
+        }
+        .glitter {
+            position: absolute;
+            top: -20px;
+            width: 8px;
+            height: 8px;
+            background: gold;
+            border-radius: 50%;
+            animation: fall 7s infinite linear;
+            opacity: 0.7;
+        }
+        .g1 { left: 15%; animation-delay: 0s; background: #ffbe0b; width: 6px; height: 6px; }
+        .g2 { left: 40%; animation-delay: 2s; background: #ff006e; }
+        .g3 { left: 60%; animation-delay: 4s; background: #ffbe0b; width: 10px; height: 10px; }
+        .g4 { left: 80%; animation-delay: 1.5s; background: #ff006e; }
+        .g5 { left: 95%; animation-delay: 5s; background: #ffbe0b; }
+
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(105vh) rotate(360deg); }
+        }
+
+        /* Main Birthday Card Container */
+        .birthday-container {
+            width: 100%;
+            max-width: 450px;
+            background-color: #fffaf0;
+            border: 4px dashed #941b0c;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(148, 27, 12, 0.15);
+            padding: 35px 25px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Headers */
+        h1 {
+            font-size: 3.8rem;
+            color: #5e1919;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            line-height: 1;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 0px #f3d5b5;
+        }
+
+        .subtitle {
+            font-style: italic;
+            font-size: 2.2rem;
+            color: #941b0c;
+            margin-bottom: 35px;
+        }
+
+        /* Interactive Section Layout */
+        .interactive-zone {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        /* Pure CSS Digital Birthday Cake Design */
+        .cake-box {
+            position: relative;
+            width: 120px;
+            height: 90px;
+            background: #f1c0e8; /* Frosting color */
+            border-radius: 12px 12px 4px 4px;
+            box-shadow: inset 0 -15px 0 #cfbaf0, 0 4px 10px rgba(0,0,0,0.05); /* Layers */
+            border-bottom: 6px solid #e0b1cb;
+        }
+        .cake-box::before { /* Strawberries on top */
+            content: "🍓 🍓 🍓";
+            position: absolute;
+            top: -22px;
+            left: 0;
+            width: 100%;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+        .cake-box::after { /* Candle */
+            content: "🕯️";
+            position: absolute;
+            top: -46px;
+            left: 46px;
+            font-size: 1.6rem;
+            animation: flicker 0.6s infinite alternate;
+        }
+        @keyframes flicker {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.08); filter: drop-shadow(0 0 4px gold); }
+        }
+
+        /* Tap/Click Me Button */
+        .envelope-btn {
+            background: #ffffff;
+            border: 2px solid #941b0c;
+            border-radius: 50px;
+            padding: 14px 32px;
+            font-family: 'Georgia', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            font-weight: bold;
+            color: #941b0c;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(148, 27, 12, 0.15);
+            transition: all 0.3s ease;
+            outline: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .envelope-btn:active, .envelope-btn:hover {
+            transform: scale(0.96);
+            background: #941b0c;
+            color: #ffffff;
+        }
+
+        /* Letter Display Panel */
+        .letter-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid #ebdcc5;
+        }
+
+        .letter-content.open {
+            max-height: 1200px;
+            opacity: 1;
+            padding: 30px 20px;
+            margin-top: 30px;
+            box-shadow: inset 0 0 25px rgba(148,27,12,0.03), 0 8px 25px rgba(0,0,0,0.04);
+        }
+
+        /* Wish Letter Content Text */
+        .letter-text {
+            color: #4a2c2c;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 22px;
+        }
+
+        .letter-text strong {
+            color: #e63946;
+            font-weight: bold;
+        }
+
+        .letter-footer {
+            border-top: 1px dashed #ebdcc5;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        .signature {
+            font-size: 1.4rem;
+            color: #5e1919;
+            font-style: italic;
+            margin-bottom: 6px;
+        }
+
+        .emojis {
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Animated Floating Elements Background Context Layer -->
+    <div class="balloon-container">
+        <div class="balloon b1"></div>
+        <div class="balloon b2"></div>
+        <div class="balloon b3"></div>
+        <div class="balloon b4"></div>
+    </div>
+
+    <div class="glitter-container">
+        <div class="glitter g1"></div>
+        <div class="glitter g2"></div>
+        <div class="glitter g3"></div>
+        <div class="glitter g4"></div>
+        <div class="glitter g5"></div>
+    </div>
+
+    <!-- Main Dynamic Birthday Wrapper Card -->
+    <div class="birthday-container">
+        
+        <h1>BALA</h1>
+        <div class="subtitle">day! 🪐 ✨</div>
+
+        <div class="interactive-zone">
+            <!-- Hand-crafted Digital Cake Design -->
+            <div class="cake-box"></div>
+            
+            <!-- Beautiful Envelope Trigger Button -->
+            <button class="envelope-btn" onclick="toggleLetter()">
+                <span>Click me!</span> ❤️
+            </button>
+        </div>
+
+        <!-- Hidden Wish Reveal Section -->
+        <div class="letter-content" id="birthdayLetter">
+            <div class="letter-text">
+                You are our <strong>brightest star</strong>, Bala!<br>
+                truly the most beautiful soul we know.<br>
+                The world feels infinitely kinder just because you’re in it.
+            </div>
+            <div class="letter-text">
+                You deserve the entire universe and more.<br>
+                May life bring you every ounce of happiness you deserve and bless you with nothing but the best.
+            </div>
+            <div class="letter-text">
+                It’s your year... go shine like you always do! 🤍
+            </div>
+            
+            <div class="letter-footer">
+                <div class="signature">Happy, happy birthday.</div>
+                <div class="signature">Love you endlessly</div>
+                <div class="emojis">🫶✨❤️🧿</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleLetter() {
+            const letter = document.getElementById('birthdayLetter');
+            letter.classList.toggle('open');
+            
+            if(letter.classList.contains('open')) {
+                setTimeout(() => {
+                    letter.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 250);
+            }
+        }
+    </script>
+</body>
+</html>
